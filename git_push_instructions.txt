@@ -1,0 +1,28 @@
+# Windows-friendly step-by-step (one-shot)
+
+# 1. Option A — If you can install Docker Desktop (recommended)
+# - Install Docker Desktop: https://www.docker.com/products/docker-desktop
+# - Ensure WSL2 is enabled (Windows features) OR enable Hyper-V.
+# - After installing, open PowerShell or Command Prompt in the project folder.
+
+docker build -t lokesh-basic-linux:v1 .
+docker run --rm lokesh-basic-linux:v1
+
+# Tag & push (replace placeholders)
+docker login
+docker tag lokesh-basic-linux:v1 <dockerhub-username>/basic-linux:v1
+docker push <dockerhub-username>/basic-linux:v1
+
+# 2. Option B — If you cannot install Docker locally
+# - Go to GitHub, create a new repository (lokesh-docker-basic-linux)
+# - Upload the files via the web UI (Upload files button)
+# - Optionally configure GitHub Actions to build the Docker image and push to Docker Hub.
+#   There are many starter workflows; GitHub will suggest one if you create a new Actions workflow.
+
+# 3. Git commands (if using Git locally)
+git init
+git add .
+git commit -m "Add Dockerfile, commands.sh and README"
+git remote add origin https://github.com/<your-username>/lokesh-docker-basic-linux.git
+git branch -M main
+git push -u origin main
